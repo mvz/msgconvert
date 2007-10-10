@@ -10,6 +10,8 @@ use Email::LocalDelivery;
 use Getopt::Long;
 use Pod::Usage;
 use File::Basename;
+use vars qw($VERSION);
+$VERSION = "0.901";
 
 # Setup command line processing.
 my $verbose = '';

@@ -6,21 +6,12 @@ WriteMakefile(
   'VERSION_FROM'    => 'tools/msgconvert.pl',
   'EXE_FILES'	    => [ 'tools/msgconvert.pl', 'tools/oledump.pl' ],
   'PREREQ_PM'	=> {
-    Carp => 0,
-    Date::Format => 0,
-    Email::MIME::ContentType => 1.014,
-    Email::MIME::Modifier => 1.442,
-    Email::MIME::Creator => 1.454,
-    Email::Simple => 2.003,
+    Email::Outlook::MSG => 0.901,
     OLE::Storage_Lite => 0.14,
-    POSIX => 0,
-    ## Needed for msgconvert.pl
     Email::LocalDelivery => 0.217,
-    ## These we need for testing
-    Email::MIME::Modifier => 1.441,
-    IO::All => 0,
-    MIME::Entity => 0,
-    Test::More => 0,
+    Getopt::Long => 0,
+    Pod::Usage => 0,
+    File::Basename => 0,
   },
 );
 

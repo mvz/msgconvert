@@ -28,6 +28,8 @@ use OLE::Storage_Lite;
 use Getopt::Long;
 use Pod::Usage;
 use locale;
+use vars qw($VERSION);
+$VERSION = "0.901";
 
 #----------------------------------------------------------------
 # PrnItem: Displays PPS infomations
