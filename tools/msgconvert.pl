@@ -5,13 +5,13 @@
 # Convert .MSG files (made by Outlook (Express)) to multipart MIME messages.
 #
 
-use Email::Outlook::MSG;
+use Email::Outlook::Message;
 use Email::LocalDelivery;
 use Getopt::Long;
 use Pod::Usage;
 use File::Basename;
 use vars qw($VERSION);
-$VERSION = "0.901";
+$VERSION = "0.902";
 
 # Setup command line processing.
 my $verbose = '';
@@ -27,7 +27,7 @@ pod2usage(1) if $help;
 defined $ARGV[0] or pod2usage(2);
 
 foreach my $file (@ARGV) {
-  my $mail = new Email::Outlook::MSG($file, $verbose)->to_email_mime->as_string;
+  my $mail = new Email::Outlook::Message($file, $verbose)->to_email_mime->as_string;
   if ($mboxfile ne '') {
     Email::LocalDelivery->deliver($mail, $mboxfile);
   } else {

@@ -1,3 +1,7 @@
+0.902	2007-10-26
+
+  - Right, that's the Email::Outlook::Message module.
+
 0.901	2007-09-30
 
   - First version of msgconvert.pl based on seperate Email::Outlook::MSG

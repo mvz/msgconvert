@@ -6,7 +6,7 @@ WriteMakefile(
   'VERSION_FROM'    => 'tools/msgconvert.pl',
   'EXE_FILES'	    => [ 'tools/msgconvert.pl', 'tools/oledump.pl' ],
   'PREREQ_PM'	=> {
-    Email::Outlook::MSG => 0.901,
+    Email::Outlook::Message => 0.901,
     OLE::Storage_Lite => 0.14,
     Email::LocalDelivery => 0.217,
     Getopt::Long => 0,
