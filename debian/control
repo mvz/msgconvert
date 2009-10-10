@@ -1,0 +1,25 @@
+Source: libmsgconvert-perl
+Section: perl
+Priority: optional
+Build-Depends: debhelper (>= 7)
+Build-Depends-Indep: perl, libemail-localdelivery-perl (>= 0.217),
+  libole-storage-lite-perl (>= 0.14),
+  libemail-outlook-message-perl (>= 0.901)
+Maintainer: Matijs van Zuijlen <matijs@matijs.net>
+Standards-Version: 3.8.3
+Homepage: http://search.cpan.org/dist/msgconvert/
+
+Package: libmsgconvert-perl
+Architecture: all
+Depends: ${perl:Depends}, ${misc:Depends},
+  libemail-localdelivery-perl (>= 0.217),
+  libole-storage-lite-perl (>= 0.14),
+  libemail-outlook-message-perl (>= 0.901)
+Description: Convert Outlook .msg files to mbox format
+ This program will convert the messages contained in the Microsoft Outlook
+ files <file.msg>... to message/rfc822 files with extension .mime.
+ Alternatively, if the --mbox option is present, all messages will be put in
+ the given mbox file. This program will complain about unrecognized OLE parts
+ in the input files on stderr.
+ .
+ This description was automagically extracted from the module by dh-make-perl.
