@@ -11,7 +11,7 @@ use Getopt::Long;
 use Pod::Usage;
 use File::Basename;
 use vars qw($VERSION);
-$VERSION = "0.902";
+$VERSION = "0.903";
 
 # Setup command line processing.
 my $verbose = '';
@@ -33,7 +33,7 @@ foreach my $file (@ARGV) {
   } else {
     my $basename = basename($file, qr/\.msg/i);
     my $outfile = "$basename.mime";
-    open OUT, ">$outfile"
+    open OUT, ">:utf8", $outfile
       or die "Can't open $outfile for writing: $!";
     print OUT $mail;
     close OUT;

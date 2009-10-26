@@ -1,3 +1,8 @@
+0.903	2009-10-26
+
+  The 'yes, it is exacly two years later' release.
+  - Mark output stream as UTF8 to silence 'wide character' warning.
+
 0.902	2007-10-26
 
   - Right, that's the Email::Outlook::Message module.
