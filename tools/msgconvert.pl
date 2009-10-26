@@ -33,7 +33,7 @@ foreach my $file (@ARGV) {
   } else {
     my $basename = basename($file, qr/\.msg/i);
     my $outfile = "$basename.mime";
-    open OUT, ">$outfile"
+    open OUT, ">:utf8", $outfile
       or die "Can't open $outfile for writing: $!";
     print OUT $mail;
     close OUT;
