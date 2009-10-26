@@ -1,3 +1,9 @@
+libmsgconvert-perl (0.903-1) unstable; urgency=low
+
+  * New Upstream Release.
+
+ -- Matijs van Zuijlen <matijs@matijs.net>  Mon, 26 Oct 2009 20:21:44 +0100
+
 libmsgconvert-perl (0.902-1) unstable; urgency=low
 
   * Initial Release.
