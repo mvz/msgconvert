@@ -6,7 +6,6 @@
 #
 
 use Email::Outlook::Message;
-use Email::Sender::Simple;
 use Email::Sender::Transport::Mbox;
 use Getopt::Long;
 use Pod::Usage;
@@ -35,9 +34,10 @@ if ($using_mbox) {
 }
 
 foreach my $file (@ARGV) {
-  my $mail = new Email::Outlook::Message($file, $verbose)->to_email_mime;
+  my $msg = new Email::Outlook::Message($file, $verbose);
+  my $mail = $msg->to_email_mime;
   if ($using_mbox) {
-    Email::Sender::Simple->send($mail, { transport => $transport });
+    $transport->send($mail, { from => $mail->header('From') || '' });
   } else {
     my $basename = basename($file, qr/\.msg/i);
     my $outfile = "$basename.mime";
