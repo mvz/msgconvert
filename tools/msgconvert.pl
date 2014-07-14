@@ -6,7 +6,7 @@
 #
 
 use Email::Outlook::Message;
-use Email::LocalDelivery;
+use Email::Sender::Transport::Mbox;
 use Getopt::Long;
 use Pod::Usage;
 use File::Basename;
@@ -26,16 +26,24 @@ pod2usage(1) if $help;
 # Check file names
 defined $ARGV[0] or pod2usage(2);
 
+my $using_mbox = $mboxfile ne '';
+my $transport;
+
+if ($using_mbox) {
+  $transport = Email::Sender::Transport::Mbox->new({ filename => $mboxfile });
+}
+
 foreach my $file (@ARGV) {
-  my $mail = new Email::Outlook::Message($file, $verbose)->to_email_mime->as_string;
-  if ($mboxfile ne '') {
-    Email::LocalDelivery->deliver($mail, $mboxfile);
+  my $msg = new Email::Outlook::Message($file, $verbose);
+  my $mail = $msg->to_email_mime;
+  if ($using_mbox) {
+    $transport->send($mail, { from => $mail->header('From') || '' });
   } else {
     my $basename = basename($file, qr/\.msg/i);
     my $outfile = "$basename.mime";
     open OUT, ">:utf8", $outfile
       or die "Can't open $outfile for writing: $!";
-    print OUT $mail;
+    print OUT $mail->as_string;
     close OUT;
   }
 }

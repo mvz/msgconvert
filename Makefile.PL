@@ -8,7 +8,7 @@ WriteMakefile(
   'PREREQ_PM'	=> {
     Email::Outlook::Message => 0.901,
     OLE::Storage_Lite => 0.14,
-    Email::LocalDelivery => 0.217,
+    Email::Sender => 1.3,
     Getopt::Long => 0,
     Pod::Usage => 0,
     File::Basename => 0,
