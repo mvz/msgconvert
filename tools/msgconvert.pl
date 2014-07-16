@@ -43,7 +43,7 @@ foreach my $file (@ARGV) {
     my $outfile = "$basename.mime";
     open OUT, ">:utf8", $outfile
       or die "Can't open $outfile for writing: $!";
-    binmode(OUT);  
+    binmode(OUT);
     print OUT $mail->as_string;
     close OUT;
   }
