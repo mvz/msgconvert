@@ -11,7 +11,7 @@ use Getopt::Long;
 use Pod::Usage;
 use File::Basename;
 use vars qw($VERSION);
-$VERSION = "0.903";
+$VERSION = "0.904";
 
 # Setup command line processing.
 my $verbose = '';
