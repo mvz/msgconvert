@@ -1,3 +1,13 @@
+0.904   2014-07-31
+
+  - Several options are added to help integrating it into desktop environments:
+    - "--destfolder" allows to choose which folder we like to save the generated
+      .mime file into.
+    - "--open" calls xdg-open once the .mime file is generated (this only works 
+      under linux, ignored on other OS)
+    - "--openwith" allows users to select the binary that will be called instead
+      of xdg-open
+
 0.903	2009-10-26
 
   The 'yes, it is exacly two years later' release.

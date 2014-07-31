@@ -5,20 +5,28 @@
 # Convert .MSG files (made by Outlook (Express)) to multipart MIME messages.
 #
 
+use Config;
 use Email::Outlook::Message;
 use Email::LocalDelivery;
 use Getopt::Long;
 use Pod::Usage;
 use File::Basename;
 use vars qw($VERSION);
-$VERSION = "0.903";
+$VERSION = "0.904";
+my $XDG_OPEN_BIN = "/usr/bin/xdg-open";
 
 # Setup command line processing.
 my $verbose = '';
 my $mboxfile = '';
+my $destfolder = '';
+my $open = '';
+my $openwith = $XDG_OPEN_BIN;
 my $help = '';	    # Print help message and exit.
 GetOptions(
+  'destfolder=s' => \$destfolder,
   'mbox=s' => \$mboxfile,
+  'open' => \$open,
+  'openwith' => \$openwith,
   'verbose' => \$verbose,
   'help|?' => \$help) or pod2usage(2);
 pod2usage(1) if $help;
@@ -33,10 +41,22 @@ foreach my $file (@ARGV) {
   } else {
     my $basename = basename($file, qr/\.msg/i);
     my $outfile = "$basename.mime";
+    
+    # If destfolder is used --open parameter is ignored
+    if ($destfolder ne '') {
+      $outfile = File::Spec->catfile($destfolder, "$basename.mime");
+    } elsif ($open ne '' && $Config{osname} eq 'linux') { # Only used under linux
+      $outfile = File::Spec->catfile("/tmp/", "$basename.mime");
+    }
     open OUT, ">:utf8", $outfile
       or die "Can't open $outfile for writing: $!";
     print OUT $mail;
     close OUT;
+    
+    # File is opened
+    if ($open ne '' && $Config{osname} eq 'linux') { # Only used under linux
+      system($openwith, $outfile);
+    }
   }
 }
 
@@ -54,19 +74,35 @@ msgconvert.pl - Convert Outlook .msg files to mbox format
 msgconvert.pl [options] <file.msg>...
 
   Options:
-    --mbox <file>   deliver messages to mbox file <file>
-    --verbose	    be verbose
-    --help	    help message
+    --destfolder <folder>   folder where generated file will be placed
+    --mbox <file>           deliver messages to mbox file <file>
+    --open                  calls system's default program to open de converted file.
+    --openwith              especify program to be used in order to open generated file.
+    --verbose	            be verbose
+    --help	                help message
 
 =head1 OPTIONS
 
 =over 8
+
+=item B<--destfolder>
+
+    Place generated .mime files into especified folder.
 
 =item B<--mbox>
 
     Deliver to the given mbox file instead of creating individual .mime
     files.
 
+=item B<--open>
+
+    Calls /usr/bin/xdg-open (unless --openwith is used) once .mime file is 
+    generated.
+
+=item B<--openwith>
+
+    Allows to define which program will be called after .mime file generation.
+    
 =item B<--verbose>
 
     Print information about skipped parts of the .msg file.
