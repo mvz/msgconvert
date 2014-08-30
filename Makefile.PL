@@ -3,8 +3,8 @@ use ExtUtils::MakeMaker;
 WriteMakefile(
   'NAME'	    => 'msgconvert',
   'AUTHOR'	    => 'Matijs van Zuijlen',
-  'VERSION_FROM'    => 'tools/msgconvert.pl',
-  'EXE_FILES'	    => [ 'tools/msgconvert.pl', 'tools/oledump.pl' ],
+  'VERSION_FROM'    => 'script/msgconvert.pl',
+  'EXE_FILES'	    => [ 'script/msgconvert.pl', 'script/oledump.pl' ],
   'PREREQ_PM'	=> {
     Email::Outlook::Message => 0.901,
     OLE::Storage_Lite => 0.14,
