@@ -7,3 +7,7 @@ pm_to_blib
 /laboratory
 /MYMETA.json
 /MYMETA.yml
+debian/files
+debian/libmsgconvert-perl.debhelper.log
+debian/libmsgconvert-perl.substvars
+debian/libmsgconvert-perl/
