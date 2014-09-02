@@ -43,7 +43,7 @@ foreach my $file (@ARGV) {
     my $outfile = "$basename.eml";
     open OUT, ">:utf8", $outfile
       or die "Can't open $outfile for writing: $!";
-    binmode(OUT);
+    binmode(OUT, ":utf8");
     print OUT $mail->as_string;
     close OUT;
   }
