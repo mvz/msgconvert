@@ -2,11 +2,10 @@
 
   - Several options are added to help integrating it into desktop environments:
     - "--destfolder" allows to choose which folder we like to save the generated
-      .mime file into.
-    - "--open" calls xdg-open once the .mime file is generated (this only works 
-      under linux, ignored on other OS)
-    - "--openwith" allows users to select the binary that will be called instead
-      of xdg-open
+      .eml file into.
+    - "--open" calls default OS open program once the .eml file is generated.
+    - "--openwith" allows users to select the binary that will be called in 
+        order to open generated file
       
 0.904	2014-07-16
 
