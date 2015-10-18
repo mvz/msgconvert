@@ -1,5 +1,10 @@
 # MSGConvert: A .MSG to mbox convertor
 
+**Note: `msgconvert` is now part of Email::Outlook::Message. Please visit the
+[Email::Outlook::Message repository on
+GitHub](https://github.com/mvz/email-outlook-message-perl) for the latest
+source code.**
+
 ## Usage
 
 To use it, run:
